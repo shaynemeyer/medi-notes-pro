@@ -1,12 +1,22 @@
-# Business Idea Generator
+# MediNotes Pro
 
-AI-powered SaaS app that streams creative business ideas for AI Agents in real-time.
+AI-powered healthcare consultation assistant that generates professional summaries, action items, and patient communications from consultation notes in real-time.
+
+![AI Generated Doctors Notes](docs/images/ai-notes.png)
 
 ## Stack
 
 - **Frontend:** Next.js 16, React 19, TypeScript, TailwindCSS 4
 - **Backend:** FastAPI (Python), Server-Sent Events (SSE)
 - **AI:** OpenAI API (streamed responses)
+- **Auth:** Clerk (authentication + subscription management)
+
+## Features
+
+- Professional medical record summaries from consultation notes
+- Action items and follow-up steps per consultation
+- Patient-friendly email draft generation
+- Premium subscription gating via Clerk
 
 ## Getting Started
 
@@ -15,13 +25,17 @@ AI-powered SaaS app that streams creative business ideas for AI Agents in real-t
 - Node.js
 - Python (with `uv`)
 - OpenAI API key
+- Clerk account (publishable key, secret key, JWKS URL)
 
 ### Environment
 
-Create a `.env` file in the project root:
+Create a `.env.local` file in the project root:
 
 ```
 OPENAI_API_KEY=your_key_here
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+CLERK_JWKS_URL=https://<your-clerk-domain>/.well-known/jwks.json
 ```
 
 ### Run the frontend
@@ -40,4 +54,4 @@ Open [http://localhost:3000](http://localhost:3000) to view the app.
 
 ## Deployment
 
-Configured for [Vercel](https://vercel.com). Set `OPENAI_API_KEY` in your Vercel project environment variables.
+Configured for [Vercel](https://vercel.com). Set all environment variables in your Vercel project settings.

@@ -60,19 +60,54 @@ Commands are identical for Docker and Podman — substitute `podman` for `docker
 
 ### Build
 
-```bash
+**Mac/Linux**:
+
+```shell
 docker build \
-  --build-arg NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_... \
-  -t health-consult .
+  --build-arg NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="$NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY" \
+  -t consultation-app .
+```
+
+Using Podman
+
+**Mac/Linux**:
+
+```shell
+podman build \
+  --build-arg NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="$NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY" \
+  -t consultation-app .
 ```
 
 ### Run
 
-```bash
+**Mac/Linux**:
+
+```shell
 docker run -p 8000:8000 \
-  -e CLERK_JWKS_URL=https://<your-clerk-domain>/.well-known/jwks.json \
-  -e OPENAI_API_KEY=... \
-  health-consult
+  -e CLERK_SECRET_KEY="$CLERK_SECRET_KEY" \
+  -e CLERK_JWKS_URL="$CLERK_JWKS_URL" \
+  -e OPENAI_API_KEY="$OPENAI_API_KEY" \
+  consultation-app
+```
+
+-- or --
+
+```shell
+podman run -p 8000:8000 \
+  -e CLERK_SECRET_KEY="$CLERK_SECRET_KEY" \
+  -e CLERK_JWKS_URL="$CLERK_JWKS_URL" \
+  -e OPENAI_API_KEY="$OPENAI_API_KEY" \
+  consultation-app
+```
+
+**Windows PowerShell**:
+
+```powershell
+podman run -p 8000:8000 `
+  -e CLERK_SECRET_KEY="$env:CLERK_SECRET_KEY" `
+  -e CLERK_JWKS_URL="$env:CLERK_JWKS_URL" `
+  -e OPENAI_API_KEY="$env:OPENAI_API_KEY" `
+  consultation-app
 ```
 
 Open [http://localhost:8000](http://localhost:8000).

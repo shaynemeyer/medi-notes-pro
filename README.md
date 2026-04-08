@@ -1,15 +1,22 @@
 # MediNotes Pro
 
-AI-powered consultation assistant that generates summaries, next steps, and patient emails from doctor's notes.
+AI-powered healthcare consultation assistant that generates professional summaries, action items, and patient communications from consultation notes in real-time.
+
+![AI Generated Doctors Notes](docs/images/ai-notes.png)
 
 ## Stack
 
 - **Frontend:** Next.js 16, React 19, TypeScript, TailwindCSS 4
 - **Backend:** FastAPI (Python), Server-Sent Events (SSE)
 - **AI:** OpenAI API (streamed responses)
-- **Auth:** Clerk
+- **Auth:** Clerk (authentication + subscription management)
 
-![AI Doctors Notes](docs/images/ai-notes.png)
+## Features
+
+- Professional medical record summaries from consultation notes
+- Action items and follow-up steps per consultation
+- Patient-friendly email draft generation
+- Premium subscription gating via Clerk
 
 ## Getting Started
 
@@ -18,17 +25,17 @@ AI-powered consultation assistant that generates summaries, next steps, and pati
 - Node.js 22
 - Python 3.12 with `uv`
 - OpenAI API key
-- Clerk account
+- Clerk account (publishable key, secret key, JWKS URL)
 
 ### Environment
 
 Create a `.env.local` file in the project root:
 
 ```env
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
-CLERK_SECRET_KEY=sk_...
+OPENAI_API_KEY=your_key_here
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
 CLERK_JWKS_URL=https://<your-clerk-domain>/.well-known/jwks.json
-OPENAI_API_KEY=...
 ```
 
 ### Run the frontend

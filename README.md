@@ -91,5 +91,3 @@ To keep the container running as a systemd service:
 podman generate systemd --name health-consult --new > ~/.config/systemd/user/health-consult.service
 systemctl --user enable --now health-consult
 ```
-
-test

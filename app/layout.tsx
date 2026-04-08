@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
-import './globals.css';
+
 import { ClerkProvider } from '@clerk/nextjs';
+import 'react-datepicker/dist/react-datepicker.css';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Business Idea Generator',
-  description: 'AI-powered business idea generation',
+  title: 'Healthcare Consultation Assistant',
+  description: 'AI-powered medical consultation summaries',
 };
 
 export default function RootLayout({

@@ -31,7 +31,7 @@ AI-powered healthcare consultation assistant that generates professional summari
 
 Create a `.env.local` file in the project root:
 
-```
+```env
 OPENAI_API_KEY=your_key_here
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
@@ -52,6 +52,20 @@ uv run uvicorn api.index:app --reload
 
 Open [http://localhost:3000](http://localhost:3000) to view the app.
 
+--
+
 ## Deployment
 
 Configured for [Vercel](https://vercel.com). Set all environment variables in your Vercel project settings.
+
+## Run dev
+
+```bash
+vercel dev
+```
+
+## Prod deploy
+
+```bash
+vercel --prod
+```

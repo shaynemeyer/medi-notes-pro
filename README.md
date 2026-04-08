@@ -9,6 +9,8 @@ AI-powered consultation assistant that generates summaries, next steps, and pati
 - **AI:** OpenAI API (streamed responses)
 - **Auth:** Clerk
 
+![AI Doctors Notes](docs/images/ai-notes.png)
+
 ## Getting Started
 
 ### Prerequisites

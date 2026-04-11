@@ -1,5 +1,5 @@
 # Stage 1: Build the Next.js app
-FROM node:22-alpine AS frontend-builder
+FROM --platform=$BUILDPLATFORM node:22-slim AS frontend-builder
 
 WORKDIR /app
 
@@ -23,13 +23,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 python3-pip curl && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install uv, create venv, install Python dependencies
+# Install uv directly from the official image (avoids QEMU segfault with pip-installed uv)
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Create venv and install Python dependencies
 ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 COPY requirements.txt .
-RUN pip3 install --no-cache-dir uv --break-system-packages && \
-    uv venv $VIRTUAL_ENV && \
+RUN uv venv $VIRTUAL_ENV && \
     uv pip install --no-cache -r requirements.txt
 
 # Copy FastAPI server
